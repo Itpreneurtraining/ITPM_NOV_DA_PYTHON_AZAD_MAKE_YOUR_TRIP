@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5 text-center">
+  <h6 class="text-warning fw-bold">REVIEW & TESTIMONIALS</h6>
+  <h2 class="fw-bold text-primary mb-5">What Our Clients Say!</h2>
+
+  <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+
+      {% for review in reviews %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="bg-white p-4 shadow rounded">
+
+              <!-- Star rating -->
+              <div class="mb-3" style="color: #ffc107;">
+                {% for i in "12345" %}
+                  {% if forloop.counter <= review.rating %}
+                    <i class="fas fa-star"></i>
+                  {% else %}
+                    <i class="far fa-star"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <!-- Comment -->
+              <p class="text-muted">{{ review.comment }}</p>
+
+              <!-- Profile -->
+              <div class="d-flex align-items-center justify-content-center mt-4 mb-3">
+                {% if review.profile_picture %}
+                  <img src="{{ review.profile_picture.url }}" alt="Profile Picture" class="rounded-circle border border-warning me-3" width="60" height="60">
+                {% else %}
+                  <div class="rounded-circle bg-warning me-3" style="width: 60px; height: 60px;"></div>
+                {% endif %}
+                <div class="text-start">
+                  <strong>{{ review.user.username }}</strong><br>
+                  <small class="text-muted">{{ review.booking.destination }}</small>
+                </div>
+              </div>
+
+              <!-- Like Button -->
+              <form method="post" action="{% url 'like_review' review.id %}" class="mb-3 d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm {% if review.is_liked %}btn-primary text-white{% else %}btn-outline-primary{% endif %}">
+                  <i class="fa fa-thumbs-up"></i> Like 
+                </button>
+              </form>
+
+              <!-- Existing Comments -->
+              <div class="text-start mb-3">
+                <h6>Comments {{ review.comment_on_review }}:</h6>
+                {% for comment in review.comments.all %}
+                <p class="mb-1">
+                  <strong>
+                    {% if comment.user %}
+                      {{ comment.user.username }}
+                    {% else %}
+                      {{ comment.name }}
+                    {% endif %}
+                  </strong>: {{ comment.comment }}
+                </p>
+                {% empty %}
+                  <p class="text-muted">No comments yet.</p>
+                {% endfor %}
+              </div>
+
+              <!-- Add Comment Form -->
+              <form method="post" action="{% url 'comment_on_review' review.id %}" class="text-start">
+                {% csrf_token %}
+                
+                {% if not request.user.is_authenticated %}
+                  <div class="mb-2">
+                    <input type="text" name="name" placeholder="Your name" class="form-control" required>
+                  </div>
+                {% endif %}
+                
+                <div class="mb-2">
+                  <textarea name="comment" rows="2" class="form-control" placeholder="Write your comment here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button"
+    data-bs-target="#reviewCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{% endblock %}

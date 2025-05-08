@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Destination List{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-5">Explore Tour Plans</h2>
+
+    <!-- Tab-style Filter Buttons -->
+    <div class="d-flex justify-content-center mb-4">
+        <a href="?category=domestic" class="btn {% if selected_category == 'domestic' %}btn-primary{% else %}btn-outline-primary{% endif %} mx-2">
+            Domestic Tour
+        </a>
+        <a href="?category=international" class="btn {% if selected_category == 'international' %}btn-primary{% else %}btn-outline-primary{% endif %} mx-2">
+            International Tour
+        </a>
+        <a href="{% url 'destination_list' %}" class="btn {% if not selected_category %}btn-primary{% else %}btn-outline-primary{% endif %} mx-2">
+            All Tours
+        </a>
+    </div>
+
+    <!-- Search Bar -->
+    <form method="get" class="mb-5 text-center">
+        {% if selected_category %}
+            <input type="hidden" name="category" value="{{ selected_category }}">
+        {% endif %}
+        <input type="text" name="q" class="form-control d-inline-block w-50" placeholder="Search destinations..." value="{{ query }}">
+        <button type="submit" class="btn btn-outline-secondary ms-2">Search</button>
+    </form>
+
+    <!-- Destination Cards -->
+    <div class="row">
+        {% for destination in destinations %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-lg border-0 destination-card">
+                {% if destination.image %}
+                <img src="{{ destination.image.url }}" class="card-img-top" alt="{{ destination.name }}" style="height: 220px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ destination.name }}</h5>
+                    <p class="card-text">{{ destination.description|truncatechars:100 }}</p>
+                    <ul class="list-unstyled mb-3">
+                        <li><strong>Country:</strong> {{ destination.country }}</li>
+                        <li><strong>Duration:</strong> {{ destination.duration }}</li>
+                        <li><strong>Price:</strong> ₹{{ destination.price }}</li>
+                        <li><strong>Type:</strong> {{ destination.tour_type|capfirst }}</li>
+                    </ul>
+                    <a href="{% url 'create_booking' destination.id %}" class="btn btn-outline-primary mt-auto w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No destinations available right now.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.destination-card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+</style>
+{% endblock %}

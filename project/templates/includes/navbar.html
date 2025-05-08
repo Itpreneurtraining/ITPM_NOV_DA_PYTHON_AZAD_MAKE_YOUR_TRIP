@@ -1,0 +1,92 @@
+
+<section class="header1">
+  <nav class="navbar bg-warning border-bottom border-body" data-bs-theme="dark">
+      <ul>
+          75000000 | makeurtrip@gmail.com | 
+          <i class="fa-brands fa-facebook" style="color: #18489a;"></i>
+          <i class="fa-brands fa-instagram" style="color: #cd3232;"></i>
+          <i class="fa-brands fa-whatsapp" style="color: #4ebe37;"></i>
+          
+      </ul>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Enquiry
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Us</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Name</label>
+                          <input type="Name" class="form-control" id="exampleFormControlInput1" placeholder="xyz">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Contact number</label>
+                          <input type="phone number" class="form-control" id="exampleFormControlInput1" placeholder="91-xxxxxxxx">
+                        </div>
+                      <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+</section>
+<section class="container-fluid bg_img" mx="auto" id="header">
+  <div class="row">
+      <div class="col-3">
+          <img src="static\pro-images\logo.png" alt="" height="100px" width="150px"
+              style="border-radius: 20%; margin-top: 10px;">
+      </div>
+      <div class="col-8">
+          
+          <ul class="nav justify-content-center">
+              <li class="nav-item">
+                  <a class="nav-link text-dark"  href="{%url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="{%url 'about' %}">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="{%url 'destination_list' %}">Tours</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="gallery.html">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="{%url 'all_reviews'%}">Testimonial</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" aria-disabled="true">Contact Us</a>
+            </li>
+          </ul>
+       </div>
+        <div class="col-1">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{%url 'login' %}">Login</a>
+                </li>
+               
+            </ul>
+
+  </div>
+
+</section>

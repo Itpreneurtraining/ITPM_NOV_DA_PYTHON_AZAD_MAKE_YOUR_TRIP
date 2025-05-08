@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    
+
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+       
+        .nav-link {
+            color: rgb(7, 7, 93) !important; 
+            font-weight: bold;
+            transition: color 0.3s ease; 
+        } 
+    
+        .nav-link:hover {
+            color: #f39c12 !important; /* Change to your preferred hover color */
+        }
+        .header1 {
+            color:white;
+        }
+        /* .text-shadow-black {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      } */
+    
+      .text-fancy-shadow {
+      color: rgb(244, 243, 243);
+      font-size: 50px;
+      font-weight: bold;
+      font-style: italic;
+      text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.341),
+        0 2px 0 rgba(0, 0, 0, 0.2),
+        0 3px 2px rgba(0, 0, 0, 0.2),
+        0 4px 4px rgba(0, 0, 0, 0.2),
+        0 5px 6px rgba(0, 0, 0, 0.15),
+        0 6px 8px rgba(0, 0, 0, 0.1);
+    }
+        
+        #info {
+    
+            margin-top: 40px;
+        }
+    
+        #Order {
+            color: white;
+             
+    
+        }
+        @keyframes moveRightToLeft {
+                from {
+                    transform: translateX(100%);
+                }
+                to {
+                    transform: translateX(0);
+                }
+            }
+    
+            .animate-image img {
+                animation: moveRightToLeft 2s linear infinite; /* Adjust duration and timing */
+                width: 200px; /* Adjust image size */
+            }
+    
+        section h3 {
+            color: rgb(63, 109, 63);
+            font-family: "Sriracha", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    
+        #footer {
+            color: antiquewhite
+        }
+    
+        .icons {
+            display: inline
+        }
+        @keyframes moveTopToBottom {
+                from {
+                    transform: translateY(-100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+    
+            /* Animation for Bottom to Top */
+            @keyframes moveBottomToTop {
+                from {
+                    transform: translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+    
+            /* Apply Animations */
+            .image-top {
+                height: 400px;
+                animation: moveTopToBottom 3s ease-in-out infinite;
+            }
+    
+            .image-bottom {
+                height: 400px;
+                animation: moveBottomToTop 3s ease-in-out infinite;
+            }
+            
+        footer {
+        margin-top: 50px;
+        background-image: url("https://images.pexels.com/photos/14785012/pexels-photo-14785012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: 100% 100%;
+        color: white;
+        padding: 40px 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+    }
+    
+    
+    .footer-left {
+        width: 30%;
+        text-align: left;
+    }
+    
+    .footer-logo {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+    
+    .footer-left p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    
+    .footer-middle {
+        width: 20%;
+    }
+    
+    .footer-middle h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .footer-middle ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-middle ul li {
+        margin-bottom: 8px;
+    }
+    
+    .footer-middle ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s ease;
+    }
+    
+    .footer-middle ul li a:hover {
+        color: #ffcc00;
+    }
+    
+    
+    .footer-right {
+        width: 45%;
+    }
+    
+    .footer-right h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .client-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .client-gallery img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
+    
+    .client-gallery img:hover {
+        transform: scale(1.1);
+    }
+    
+    .copyright {
+        background-color: rgb(23, 23, 36);
+        width: 100%; 
+        height: 50px; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        font-size: 15px;
+        color: white; 
+        margin-top: 45px;
+        margin-bottom: 10px;
+        padding: 0; 
+        overflow: hidden; 
+    }
+    
+    
+            
+    
+        
+    </style>
+    
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+  
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+      {% block content %}{% endblock %}
+    </main>
+  
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+    
+    
+    
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+   
+</body>
+</html>
